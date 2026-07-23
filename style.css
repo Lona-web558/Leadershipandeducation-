@@ -1,0 +1,415 @@
+/* ============================================================
+   Leadership & Education Excellence — design tokens
+   Palette: Ink Navy / Parchment / Regalia Gold / Savannah Green
+   Type: Fraunces (display) + Public Sans (body) + JetBrains Mono (utility)
+   ============================================================ */
+
+:root {
+  --ink-navy: #12203a;
+  --ink-navy-deep: #0b1526;
+  --parchment: #f2efe6;
+  --regalia-gold: #c9a227;
+  --regalia-gold-bright: #e4c257;
+  --savannah-green: #3f6b4f;
+  --text-light: #ece7d9;
+  --text-light-dim: #b9c0cf;
+  --text-dark: #1b1b18;
+  --rule: rgba(236, 231, 217, 0.16);
+  --rule-dark: rgba(18, 32, 58, 0.14);
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Public Sans", -apple-system, Segoe UI, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ink-navy);
+  color: var(--text-light);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--regalia-gold); color: var(--ink-navy-deep); }
+
+a { color: var(--regalia-gold-bright); text-decoration: none; }
+a:hover { color: var(--regalia-gold); text-decoration: underline; }
+
+:focus-visible {
+  outline: 2px solid var(--regalia-gold-bright);
+  outline-offset: 3px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--regalia-gold);
+}
+
+.display-serif {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* ---------------- Masthead ---------------- */
+
+.masthead {
+  background: linear-gradient(180deg, var(--ink-navy-deep), var(--ink-navy) 85%);
+  border-bottom: 1px solid var(--rule);
+  padding: 0.9rem 0 0;
+}
+
+.masthead-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.brand-mark {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--text-light);
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.brand-mark .brand-dot { color: var(--regalia-gold-bright); }
+
+.masthead-date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-light-dim);
+  letter-spacing: 0.04em;
+}
+
+.masthead-nav {
+  display: flex;
+  gap: 1.6rem;
+  padding: 0.7rem 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.masthead-nav a { color: var(--text-light-dim); }
+.masthead-nav a:hover, .masthead-nav a.active { color: var(--regalia-gold-bright); text-decoration: none; }
+
+/* ---------------- Leadership Index ticker (signature element) --------- */
+
+.leadership-index {
+  background: var(--ink-navy-deep);
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.leadership-index::before {
+  content: "LEADERSHIP INDEX";
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--ink-navy-deep);
+  background: var(--regalia-gold);
+  padding: 0.4rem 0.9rem;
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+}
+
+.ticker-track {
+  display: inline-flex;
+  gap: 2.5rem;
+  padding: 0.45rem 1.2rem;
+  animation: ticker-scroll 38s linear infinite;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-light-dim);
+}
+
+.leadership-index:hover .ticker-track { animation-play-state: paused; }
+
+.ticker-track span { color: var(--regalia-gold-bright); }
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; }
+}
+
+/* ---------------- Hero ---------------- */
+
+.hero {
+  padding: 3.2rem 0 2.6rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+  line-height: 1.08;
+  font-weight: 700;
+  color: var(--text-light);
+  margin: 0.6rem 0 1rem;
+}
+
+.hero-excerpt {
+  font-size: 1.12rem;
+  color: var(--text-light-dim);
+  max-width: 46rem;
+}
+
+.hero-byline {
+  margin-top: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-light-dim);
+}
+
+.byline-avatar {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background: var(--savannah-green);
+  color: var(--text-light);
+  font-family: var(--font-display);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ---------------- Article cards / grid ---------------- */
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--regalia-gold);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.article-card {
+  background: rgba(242, 239, 230, 0.03);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 1.5rem;
+  height: 100%;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.article-card:hover {
+  border-color: var(--regalia-gold);
+  transform: translateY(-2px);
+}
+
+.article-card .cat-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--savannah-green);
+  background: rgba(63, 107, 79, 0.18);
+  padding: 0.18rem 0.55rem;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.article-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.28rem;
+  font-weight: 600;
+  color: var(--text-light);
+  margin: 0.75rem 0 0.5rem;
+  line-height: 1.25;
+}
+
+.article-card h3 a { color: inherit; }
+.article-card h3 a:hover { color: var(--regalia-gold-bright); text-decoration: none; }
+
+.article-card p { color: var(--text-light-dim); font-size: 0.92rem; }
+
+.article-card .meta {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-light-dim);
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--rule);
+}
+
+/* ---------------- Article detail (parchment reading surface) --------- */
+
+.reading-surface {
+  background: var(--parchment);
+  color: var(--text-dark);
+}
+
+.reading-surface .eyebrow { color: var(--savannah-green); }
+
+.article-body {
+  font-family: var(--font-body);
+  font-size: 1.12rem;
+  line-height: 1.85;
+  color: #2a2a24;
+  max-width: 42rem;
+}
+
+.article-body p { margin-bottom: 1.4rem; }
+
+.article-body p:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-size: 3.6rem;
+  font-weight: 700;
+  float: left;
+  line-height: 0.8;
+  padding: 0.1rem 0.5rem 0 0;
+  color: var(--savannah-green);
+}
+
+.reading-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.12;
+  margin: 0.7rem 0 1.1rem;
+}
+
+.reading-byline {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: #4a4a3f;
+  border-top: 1px solid var(--rule-dark);
+  border-bottom: 1px solid var(--rule-dark);
+  padding: 0.8rem 0;
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+/* ---------------- Footer ---------------- */
+
+.site-footer {
+  background: var(--ink-navy-deep);
+  border-top: 1px solid var(--rule);
+  padding: 2.4rem 0;
+  color: var(--text-light-dim);
+  font-size: 0.85rem;
+}
+
+.site-footer .footer-brand {
+  font-family: var(--font-display);
+  color: var(--text-light);
+  font-size: 1.1rem;
+}
+
+/* ---------------- Buttons ---------------- */
+
+.btn-gold {
+  background: var(--regalia-gold);
+  border: 1px solid var(--regalia-gold);
+  color: var(--ink-navy-deep);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.55rem 1.3rem;
+  border-radius: 3px;
+}
+
+.btn-gold:hover { background: var(--regalia-gold-bright); color: var(--ink-navy-deep); }
+
+.btn-outline-parchment {
+  border: 1px solid var(--rule);
+  color: var(--text-light);
+  font-size: 0.85rem;
+  padding: 0.55rem 1.3rem;
+  border-radius: 3px;
+}
+
+.btn-outline-parchment:hover { border-color: var(--regalia-gold); color: var(--regalia-gold-bright); }
+
+/* ---------------- Admin ---------------- */
+
+.admin-panel {
+  background: var(--ink-navy-deep);
+  min-height: 100vh;
+  color: var(--text-light);
+}
+
+.admin-card {
+  background: rgba(242, 239, 230, 0.04);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 1.6rem;
+}
+
+.form-control, .form-select {
+  background: rgba(242, 239, 230, 0.06);
+  border: 1px solid var(--rule);
+  color: var(--text-light);
+}
+
+.form-control:focus, .form-select:focus {
+  background: rgba(242, 239, 230, 0.08);
+  border-color: var(--regalia-gold);
+  color: var(--text-light);
+  box-shadow: 0 0 0 0.2rem rgba(201, 162, 39, 0.18);
+}
+
+.form-control::placeholder { color: var(--text-light-dim); }
+
+.admin-table {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.admin-table th {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-light-dim);
+  border-color: var(--rule) !important;
+}
+
+.admin-table td { border-color: var(--rule) !important; vertical-align: middle; }
+
+/* ---------------- Utility ---------------- */
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--text-light-dim);
+}
+
+.empty-state .display-serif { color: var(--text-light); font-size: 1.6rem; margin-bottom: 0.5rem; }
+
+@media (max-width: 767px) {
+  .masthead-top { flex-wrap: wrap; gap: 0.4rem; }
+  .masthead-nav { flex-wrap: wrap; gap: 1rem; }
+  .article-body p:first-of-type::first-letter { font-size: 2.6rem; }
+}

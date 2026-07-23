@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Leadership &amp; Education Excellence</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-panel">
+
+<header class="masthead">
+  <div class="container">
+    <div class="masthead-top">
+      <a href="/" class="brand-mark">Leadership <span class="brand-dot">&amp;</span> Education<span class="brand-dot">.</span></a>
+      <span class="eyebrow">Admin</span>
+    </div>
+  </div>
+</header>
+
+<main class="container" style="padding: 3rem 0 4rem; max-width: 900px;">
+
+  <!-- Login gate -->
+  <div id="login-gate" class="admin-card" style="max-width: 26rem; margin: 0 auto;">
+    <div class="eyebrow">Admin access</div>
+    <h2 class="display-serif" style="color: var(--text-light); font-size: 1.5rem; margin: 0.5rem 0 1.2rem;">Enter admin key</h2>
+    <input type="password" class="form-control mb-3" id="admin-key-input" placeholder="Admin key">
+    <button class="btn btn-gold w-100" id="login-btn">Unlock admin panel</button>
+    <p id="login-error" class="mt-3 mb-0" style="color: #e46a6a; font-size: 0.85rem; display:none;">Incorrect key. Try again.</p>
+  </div>
+
+  <!-- Panel (hidden until unlocked) -->
+  <div id="panel" style="display:none;">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+      <div>
+        <div class="eyebrow">Content management</div>
+        <h2 class="display-serif" style="color: var(--text-light); font-size: 1.6rem; margin: 0.3rem 0 0;">Manage articles</h2>
+      </div>
+      <button class="btn btn-outline-parchment" id="new-article-btn">+ New article</button>
+    </div>
+
+    <!-- Article list -->
+    <div id="list-view">
+      <div class="table-responsive admin-card">
+        <table class="table admin-table mb-0">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Featured</th>
+              <th style="width: 1%;"></th>
+            </tr>
+          </thead>
+          <tbody id="articles-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Article form (create/edit) -->
+    <div id="form-view" class="admin-card mt-4" style="display:none;">
+      <h3 class="display-serif" style="color: var(--text-light); font-size: 1.3rem;" id="form-heading">New article</h3>
+      <input type="hidden" id="edit-id">
+
+      <div class="mb-3">
+        <label class="form-label eyebrow">Title</label>
+        <input type="text" class="form-control" id="f-title">
+      </div>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <label class="form-label eyebrow">Category</label>
+          <select class="form-select" id="f-category">
+            <option>Higher Education Reform</option>
+            <option>School Leadership</option>
+            <option>Global Education Trends</option>
+            <option>Policy &amp; Governance</option>
+            <option>General</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label eyebrow">Tags (comma separated)</label>
+          <input type="text" class="form-control" id="f-tags" placeholder="Leadership, Education Excellence">
+        </div>
+      </div>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-4">
+          <label class="form-label eyebrow">Author</label>
+          <input type="text" class="form-control" id="f-author" value="Nomawethu Matshingana">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label eyebrow">Author role</label>
+          <input type="text" class="form-control" id="f-role" value="Educator | Writer">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label eyebrow">Date</label>
+          <input type="date" class="form-control" id="f-date">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label eyebrow">Excerpt</label>
+        <textarea class="form-control" id="f-excerpt" rows="2"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label eyebrow">Body (one paragraph per line)</label>
+        <textarea class="form-control" id="f-body" rows="9"></textarea>
+      </div>
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="f-featured">
+        <label class="form-check-label" for="f-featured">Feature this article on the homepage hero</label>
+      </div>
+
+      <div class="d-flex gap-2">
+        <button class="btn btn-gold" id="save-btn">Save article</button>
+        <button class="btn btn-outline-parchment" id="cancel-btn">Cancel</button>
+      </div>
+      <p id="form-error" class="mt-3 mb-0" style="color: #e46a6a; font-size: 0.85rem; display:none;"></p>
+    </div>
+  </div>
+</main>
+
+<script src="admin.js"></script>
+</body>
+</html>
